@@ -1,8 +1,8 @@
-import { TaskUpdateRequest } from "@/dtos/taskDtos";
-import { Ref } from "vue";
-import { AxiosError } from "axios";
-import { webService } from "@/services/taskApi";
+import {Ref} from "vue";
+import {AxiosError} from "axios";
+import {webService} from "@/services/taskApi";
 import logRequestError from "@/composables/logRequestError";
+
 export async function removeTask(
   id: number,
   isLoading: Ref<boolean>,
@@ -13,14 +13,13 @@ export async function removeTask(
 ): Promise<void> {
   isLoading.value = true;
   isNetworkError.value = false;
-  await webService
-    .deleteTask(id)
+  await webService.deleteTask(id)
     .then(() => {
       fetchTasks(taskType);
       isLoading.value = false;
     })
     .catch((err: AxiosError | unknown) => {
-      logRequestError("removeTask", err);
+      logRequestError('removeTask', err);
       axiosError.value = err instanceof AxiosError ? err : undefined;
       isNetworkError.value = true;
     })

@@ -1,8 +1,8 @@
-import { reactive, ref, Ref } from "vue";
-import { AxiosError } from "axios";
+import {reactive, ref, Ref} from "vue";
+import {AxiosError} from "axios";
 import logRequestError from "@/composables/logRequestError";
-import { webService } from "@/services/taskApi";
-import { TaskFetchResponse } from "@/dtos/taskDtos";
+import {webService} from "@/services/taskApi";
+import {TaskFetchResponse} from "@/dtos/taskDtos";
 
 interface TasksFetchState {
   fetchTasks: (taskType: string) => Promise<void>;
@@ -26,7 +26,7 @@ export function getTasks(): TasksFetchState {
       tasks.splice(0, tasks.length, ...response.data);
       isNetworkError.value = false;
     } catch (err: AxiosError | unknown) {
-      logRequestError("fetchTasks", err);
+      logRequestError('fetchTasks', err);
       axiosError.value = err instanceof AxiosError ? err : undefined;
       isNetworkError.value = true;
     } finally {
@@ -34,5 +34,5 @@ export function getTasks(): TasksFetchState {
     }
   }
 
-  return { fetchTasks, tasks, isLoading, isNetworkError, axiosError };
+  return {fetchTasks, tasks, isLoading, isNetworkError, axiosError};
 }

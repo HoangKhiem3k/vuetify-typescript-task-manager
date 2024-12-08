@@ -1,8 +1,8 @@
-import { Ref } from "vue";
-import { AxiosError } from "axios";
+import {Ref} from "vue";
+import {AxiosError} from "axios";
 import logRequestError from "@/composables/logRequestError";
-import { TaskCreateRequest } from "@/dtos/taskDtos";
-import { webService } from "@/services/taskApi";
+import {TaskCreateRequest} from "@/dtos/taskDtos";
+import {webService} from "@/services/taskApi";
 
 export async function generateTask(
   request: TaskCreateRequest,
@@ -13,14 +13,13 @@ export async function generateTask(
 ): Promise<void> {
   isLoading.value = true;
   isNetworkError.value = false;
-  await webService
-    .createTask(request)
+  await webService.createTask(request)
     .then(() => {
       isLoading.value = false;
       navigateToTasksView();
     })
     .catch((err: AxiosError | unknown) => {
-      logRequestError("generateTask", err);
+      logRequestError('generateTask', err);
       axiosError.value = err instanceof AxiosError ? err : undefined;
       isNetworkError.value = true;
     })

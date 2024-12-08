@@ -1,10 +1,11 @@
-import { defineStore } from "pinia";
-import { TaskFetchResponse, TaskState } from "@/dtos/taskDtos";
+import {defineStore} from "pinia";
+import {TaskFetchResponse, TaskState} from "@/dtos/taskDtos";
 
-export const useTaskStore = defineStore("task", {
+
+export const useTaskStore = defineStore('task', {
   state: () => ({
     taskToEdit: Object as TaskFetchResponse | unknown,
-    selectedTaskType: TaskState[TaskState.OPEN],
+    selectedTaskType: TaskState[TaskState.OPEN]
   }),
   actions: {
     setTaskToEdit(task: TaskFetchResponse) {
@@ -12,6 +13,6 @@ export const useTaskStore = defineStore("task", {
     },
     setSelectedTaskType(taskType: string) {
       this.selectedTaskType = taskType;
-    },
-  },
-});
+    }
+  }
+})

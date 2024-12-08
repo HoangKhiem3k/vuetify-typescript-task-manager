@@ -5,9 +5,11 @@ import {
   HOME_VIEW,
   TASK_CREATE_VIEW,
   TASK_DETAIL_VIEW,
+  TASK_UPDATE_VIEW,
 } from "@/constants/appConstants";
 import TaskCreatePage from "@/pages/TaskCreatePage.vue";
 import TaskDetailsPage from "@/pages/TaskDetailsPage.vue";
+import TaskUpdatePage from "@/pages/TaskUpdatePage.vue";
 
 const routes = [
   {
@@ -30,6 +32,12 @@ const routes = [
         path: "tasks/:id",
         name: TASK_DETAIL_VIEW,
         component: TaskDetailsPage,
+        props: true,
+      },
+      {
+        path: "tasks/edit/:id",
+        name: TASK_UPDATE_VIEW,
+        component: TaskUpdatePage,
         props: true,
       },
     ],

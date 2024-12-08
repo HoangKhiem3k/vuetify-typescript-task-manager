@@ -1,3 +1,4 @@
+import router from "@/router";
 import { useTaskStore } from "@/store/taskStore";
 import {
   ALL_TASKS,
@@ -6,10 +7,10 @@ import {
   OPEN_TASKS,
 } from "@/constants/appConstants";
 import { TaskState } from "@/dtos/taskDtos";
-import router from "@/router";
 
 export function useTaskNavigation() {
   const taskStore = useTaskStore();
+
   const handleTaskTypeSelected = (taskType: string): void => {
     switch (taskType) {
       case OPEN_TASKS:
@@ -22,18 +23,17 @@ export function useTaskNavigation() {
         taskStore.selectedTaskType = "";
         break;
     }
-    navigateToTaskView();
+    navigateToTasksView();
   };
-  const navigateToTaskView = (): void => {
+
+  const navigateToTasksView = (): void => {
     router.replace({ name: HOME_VIEW }).then();
   };
+
   const logoClicked = (): void => {
     taskStore.selectedTaskType = TaskState[TaskState.OPEN];
     router.replace({ name: HOME_VIEW }).then();
   };
-  return {
-    handleTaskTypeSelected,
-    navigateToTaskView,
-    logoClicked,
-  };
+
+  return { handleTaskTypeSelected, navigateToTasksView, logoClicked };
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType, ref, watch } from "vue";
+import { PropType, ref, watch, defineProps } from "vue";
 import { AxiosError } from "axios";
 const props = defineProps({
     axiosError: Object as PropType<AxiosError>,

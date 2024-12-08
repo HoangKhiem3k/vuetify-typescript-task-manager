@@ -1,12 +1,21 @@
-export enum TaskState {
-  OPEN,
-  CLOSED,
-}
 export enum Priority {
   LOW,
   MEDIUM,
   HIGH,
 }
+
+export enum TaskState {
+  OPEN,
+  CLOSED,
+}
+
+export interface TaskCreateRequest {
+  description: string;
+  isReminderSet: boolean;
+  isTaskOpen: boolean;
+  priority: Priority;
+}
+
 export interface TaskFetchResponse {
   id: number;
   description: string;
@@ -15,12 +24,7 @@ export interface TaskFetchResponse {
   createdOn: string | null;
   priority: Priority | null;
 }
-export interface TaskCreateRequest {
-  description: string;
-  isReminderSet: boolean;
-  isTaskOpen: boolean;
-  priority: Priority;
-}
+
 export interface TaskUpdateRequest {
   description: string | null;
   isReminderSet: boolean | null;

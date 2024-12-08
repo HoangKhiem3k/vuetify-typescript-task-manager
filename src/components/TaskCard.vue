@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useTaskStore } from "@/store/taskStore";
 import { TaskFetchResponse } from "@/dtos/taskDtos";
 import { formatDate } from "@/composables/formatDate";
